@@ -23,10 +23,16 @@ Perhaps add a picture of your demo. Guideline: 1/2 sentences.
 
 ## **My VGA Design Edit**
 Initially, I wanted to draw an original Straw Hat Pirates logo from the manga and anime One Piece.
-
+<img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/Straw%20Hat%20Pirates%20Logo.webp">
 Unfortunately, as we can see from the image, I think it is too complicated for this project. Thus, I will be simplifying it and hopefully it will be just as nice as the original one and maybe a little cuter. 
 ### **Code Adaptation**
-Briefly show how you changed the template code to display a different image. Demonstrate your understanding. Guideline: 1-2 short paragraphs.
+
+First, I declared the base parameters. They are screen height, screen width, x center, and y center. Since I am displaying graphics on a 640x480 display, the screen height will be 480 and the screen width will be 640. X center will be screen width / 2 and y center will be screen height / 2.  
+
+I started by drawing a white circle in the middle. First, I declared its radius. I figured 120 will be a good radius since then its diameter will be 240 which is half the screen height. Next, I used a conditional statement to declare the area of it. In fact, how you draw in Verilog is first, you declare the area you want to fill using a conditional statement. Then, you fill it using binarised RGB (Red, Green, and Blue) values of the colour you want to fill. 
+
+if ((row - eyeYCenter) * (row - eyeYCenter) + (col - leftEyeXCenter) * (col - leftEyeXCenter) < eyeRadius * eyeRadius || (row - eyeYCenter) * (row - eyeYCenter) + (col - rightEyeXCenter) * (col - rightEyeXCenter) < eyeRadius * eyeRadius) begin
+
 ### **Simulation**
 Show how you simulated your own design. Are there any things to note? Demonstrate your understanding. Add a screenshot. Guideline: 1-2 short paragraphs.
 ### **Synthesis**
