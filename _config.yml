@@ -1,9 +1,9 @@
 # Site settings
 title: System-on-Chip Design & Verification
 author:
-  name: Michelle Lynch
-  email: your-email@domain.com
-description: "A blog."
+  name: Choon Xiang Yeoh
+  email: g00425056@atu.ie
+description: "An FPGA VGA Driver Project Blog"
 
 # Build settings
 remote_theme: jekyll/minima
