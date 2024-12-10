@@ -5,7 +5,7 @@ tags: fpga vga verilog
 categories: demo
 ---
 
-Add a short welcome message or introduction here. Aim to get the viewer interested in what follows! Guideline: 1 or 2 sentences.
+Hi, I am Choon Xiang and welcome to my FPGA VGA Driver Project blog. I will be drawing a simplified Straw Hat Pirates logo from the manga and anime One Piece. I will be documenting my progress so read along if you are interested! 
 
 ## **Template VGA Design**
 ### **Project Set-Up**
