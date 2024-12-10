@@ -22,7 +22,9 @@ Describe the synthesis and implementation processes. Consider including 1/2 usef
 Perhaps add a picture of your demo. Guideline: 1/2 sentences.
 
 ## **My VGA Design Edit**
-Introduce your own design idea. Consider how complex/achievabble this might be or otherwise. Reference any research you do online (use hyperlinks).
+Initially, I wanted to draw an original Straw Hat Pirates logo from the manga and anime One Piece.
+
+Unfortunately, as we can see from the image, I think it is too complicated for this project. Thus, I will be simplifying it and hopefully it will be just as nice as the original one and maybe a little cuter. 
 ### **Code Adaptation**
 Briefly show how you changed the template code to display a different image. Demonstrate your understanding. Guideline: 1-2 short paragraphs.
 ### **Simulation**
