@@ -33,7 +33,10 @@ First, I declared the base parameters. They are screen height, screen width, x c
 
 Then, I drew its skull by filling a white circle in the middle. First, I declared its radius. I figured 120 will be a good radius since then its diameter will be 240 which is half the screen height. Next, I used a conditional statement to declare the area of it. In fact, how you draw in Verilog is first, you declare the area you want to fill using a conditional statement. Then, you fill it using binarised RGB (Red, Green, and Blue) values of the colour.
 
-Next, I drew its hat. I started by filling the top half of the circle dark yellow. After that, I drew the red bottom part of the hat by filling the middle to lower part of the hat red. Finally, I drew the brim of the hat by filling a dark yellow rectangle at the bottom part of the hat.
+Next, I drew its hat. I started by filling the top half of the circle dark yellow. 
+After that, I drew the red bottom part of the hat by filling the middle to lower part of the hat red. Finally, I drew the brim of the hat by filling a dark yellow rectangle at the bottom part of the hat.
+
+After that, I drew its eyes and its nose. It's just three black circles and since I knew how to draw a circle, it was quite simple.
 
 if ((row - eyeYCenter) * (row - eyeYCenter) + (col - leftEyeXCenter) * (col - leftEyeXCenter) < eyeRadius * eyeRadius || (row - eyeYCenter) * (row - eyeYCenter) + (col - rightEyeXCenter) * (col - rightEyeXCenter) < eyeRadius * eyeRadius) begin
 
