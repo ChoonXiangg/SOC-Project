@@ -42,17 +42,23 @@ Unfortunately, as we can see from the image, I think it is too complicated for t
 
 First, I declared the base parameters. They are screen height, screen width, x center, and y center. Since I am displaying graphics on a 640x480 display, the screen height will be 480 and the screen width will be 640. X center will be screen width / 2 and y center will be screen height / 2. I also declared other variables such as left eye x center, right eye x center, eye y center, eye radius, nose y center, and nose radius but I will talk about them later.
 
+<img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/1.jpeg">
+
 Then, I drew its skull by filling a white circle in the middle. First, I declared its radius. I figured 120 will be a good radius since then its diameter will be 240 which is half the screen height. Next, I used a conditional statement to declare the area of it. In fact, how you draw in Verilog is first, you declare the area you want to fill using a conditional statement. Then, you fill it using binarised RGB (Red, Green, and Blue) values of the colour.
 
 <img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/Code%20(1).png">
 
 This is how I declared its boundaries. Imagine a circle with a center of (0, 0), we can declare any point on the circle as (x, y). Then, we draw a right triangle. We do that by connecting the point to the center and name it c. c will be the hypotenuse of the triangle. After that, we connect the point perpendicularly to the x axis and name it a. Afterwards, we connect the point's x intercept to the center and name it b. Since a is perpendicular to b, this is a right triangle. We know that the length of a, b, and c is y, x, and the radius. Based on Pythagorean Theorem, we know that a^2 + b^2 = c^2. We can substitute it to x^2 + y^2 = r^2. This means that if x^2 + y^2 < r^2, the point is within the triangle, thus also within the circle. It may seem like we only declared the boundary of a triangle instead of a circle. This is where the way FPGA VGA draws comes in. It will start from the upper left most pixel (0, 0), fill it's colour, move to the right, and repeat until it reaches the right most pixel. Subsequently, it will move down and to the left most pixel, and repeat. It repeats until every pixel is filled. Thus, instead of only declaring a point, it will declare every point on the circle, drawing theoretically infinite amount of right triangle in the circle. Therefore, we are not only declaring the boundary of a triangle, but the boundary of the circle instead. Finally, substitute row - y center to y and col to x center to x and we get the condition.  
 
+<img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/2.jpeg">
+
 Next, I drew its hat. I started by filling the top half of the circle dark yellow.
 
 <img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/Code%20(2).png">
 
 This is quite simple. row < y center just means the upper half of the screen. Note that it has to be within the conditional statement of the circle. Otherwise, the whole upper half of the screen will be filled dark yellow.
+
+<img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/3.jpeg">
 
 <img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/Code%20(3).png">
 
@@ -64,6 +70,10 @@ Finally, I drew the brim of the hat by filling a dark yellow rectangle at the bo
 
 if ((row - eyeYCenter) * (row - eyeYCenter) + (col - leftEyeXCenter) * (col - leftEyeXCenter) < eyeRadius * eyeRadius || (row - eyeYCenter) * (row - eyeYCenter) + (col - rightEyeXCenter) * (col - rightEyeXCenter) < eyeRadius * eyeRadius) begin
 
+<img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/4.jpeg">
+
+<img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/5.jpeg">
+
 <img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/Code%20(5).png">
 
 After that, I drew its eyes and its nose. It's just three black circles and since I knew how to draw a circle, it was quite simple.
@@ -72,10 +82,16 @@ After that, I drew its eyes and its nose. It's just three black circles and sinc
 
 This is my final edited code.
 ### **Simulation**
-
+Pixels are divided into squares according to row and col divisions, the clock drives the logic, reset initialises the counters and register, hsync and vsync control screen refresh and timing, and the RGB values are displayed for the current pixel. This procedure is similar to the simulation process outlined in the Given Template section. The vertical colours are shifting in this instance, as opposed to the ColourStries module where they are fixed. Each pixel's colour at each time is defined by the RGB outputs, which are 4 bit outputs. Depending on the counter, the RGB changes every so often [30:25]. The RGB signals stay stable for a while before switching to a new value.
 ### **Synthesis**
+The parts needed to create the VGA signals for display and clock signal management are illustrated in the synthesis schematic. The colorstripes module generates RGB signals after receiving clk and rst as inputs for synchronisation. Like in the Synthesis section above, hsync and vsync are utilised as synchronisation signals and output the vid_on to enable display. The scan lines are managed by hcount and vcount.
+
+<img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/Architecture%20Diagram.png">
 
 ### **Demonstration**
+
+<img src="https://raw.githubusercontent.com/ChoonXiangg/SOC-Project/refs/heads/main/docs/assets/images/5.jpeg">
+
 This is my final demonstration.
 ### **References**
 ChatGPT for explanations.
